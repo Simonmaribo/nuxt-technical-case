@@ -17,7 +17,7 @@
   margin: 20px;
   display: inline-block;
   img {
-    width: 150px;
+    width: 350px;
   }
 }
 .container {
