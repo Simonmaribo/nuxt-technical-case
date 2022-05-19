@@ -10,7 +10,7 @@ We need some way of showing all of our campaigns horizontally. But there may be 
 
 Implement a container component that shows the cards inside it horizontally overflow, and add buttons/arrows so the user can scroll without using the scrollbar.
 
-Consider creating more than the container component to make the code base more readable, for-example create a campaign card component.
+Consider creating more than the container component to make the code base more readable, for-example create a campaign card component, and applying a bit of css to make it more than just plain html elements.
 
 *Tip: nuxt.js auto imports using filename of the file in the `components`*
 
