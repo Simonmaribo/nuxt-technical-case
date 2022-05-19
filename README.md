@@ -1,5 +1,21 @@
 # nuxt-technical-case
 
+# What's the meaning of the case?
+You are able to try out building something with our tech setup, and we can afterwards have a constructive talk about how you approached a technical implementation/problem.
+
+
+# What is the case?
+We need some way of showing all of our campaigns horizontally. But there may be too many for the users screen, meaning we need to introduce some smart way of scrolling.
+
+
+Implement a container component that shows the cards inside it horizontally overflow, and add buttons/arrows so the user can scroll without using the scrollbar.
+
+Consider creating more than the container component to make the code base more readable, for-example create a campaign card component.
+
+*Tip: nuxt.js auto imports using filename of the file in the `components`*
+
+
+
 ## Build Setup
 
 ```bash
@@ -10,11 +26,8 @@ $ npm install
 $ npm run dev
 
 # build for production and launch server
-$ npm run build
 $ npm run start
 
-# generate static project
-$ npm run generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
