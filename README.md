@@ -33,6 +33,15 @@ $ npm run start
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
+## Fetching data
+We have implemented a simple GET REST service that resolves dummy message information, this endpoint is available at https://technical-case.dreaminfluencers.com/ .
+
+## Design
+We have a Figma design available that shows how the design could look like.
+https://www.figma.com/file/AaLshtmpoOV9ynUwXNUVsn/Code-Task-(Swimlane)?node-id=1%3A3058 (If you have issues inspecting design information, try logging into figma)
+
+[![figma](https://r2.dreaminfluencers.com/campaigns.png "figma")](https://r2.dreaminfluencers.com/campaigns.png "figma")
+
 ## Special Directories
 
 You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
