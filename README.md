@@ -34,7 +34,7 @@ $ npm run start
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Fetching data
-We have implemented a simple GET REST service that resolves dummy message information, this endpoint is available at https://technical-case.dreaminfluencers.com/ .
+We have implemented a simple GET REST service that resolves dummy campaign information, this endpoint is available at https://technical-case.dreaminfluencers.com/ .
 
 ## Design
 We have a Figma design available that shows how the design could look like.
