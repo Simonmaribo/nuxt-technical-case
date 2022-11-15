@@ -1,46 +1,48 @@
 <template>
   <div class="container">
-    <h1>Welcome!</h1>
-    <h2>See open campaigns below</h2>
-    <div class="campaign">
-      <img src="https://dreaminfluencers.s3.eu-central-1.amazonaws.com/userContent/K3OkZOAFtkVplTVUkwn2x">
-      <h3>Campaign Title</h3>
-      <h4>Campaign Description</h4>
-    </div>
-    <h3>
-      Dummy campaign data
-    </h3>
-    <p>
-      {{ campaigns }}
-    </p>
+    <DraggableContainer>
+      <CampaignCard
+        v-for="(campaign, index) in campaigns"
+        :key="index"
+        :campaign="campaign"
+      />
+    </DraggableContainer>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.campaign {
-  padding: 20px;
-  border: solid 1px black;
-  margin: 20px;
-  display: inline-block;
-  img {
-    width: 350px;
-  }
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  text-decoration: none !important;
+  scroll-behavior: smooth;
 }
+
+body {
+  background-color: #fefefe;
+}
+
 .container {
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 </style>
 <script>
 //use the campaigns from the data variable campaigns
 
 export default {
-  name: 'IndexPage',
+  name: "IndexPage",
   async asyncData({ $axios }) {
     return {
       campaigns: await $axios.$get("/"),
       loading: true,
-      error: null
-    }
-  }
-}
+      error: null,
+    };
+  },
+};
 </script>
