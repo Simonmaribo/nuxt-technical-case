@@ -1,16 +1,14 @@
 <template>
   <div
-    class="slide-container"
-    ref="container"
+    class="slider"
+    ref="slider"
     @mousedown="mouseDown"
     @mouseenter="mouseEnter"
     @mouseleave="mouseLeave"
     @mousemove.prevent="mouseMove"
     @mouseup="mouseUp"
   >
-    <div class="slider" ref="slider">
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
 
@@ -20,50 +18,41 @@ export default {
   data() {
     return {
       startX: 0,
-      currentX: 0,
+      scrollLeft: 0,
       isPressed: false,
     };
   },
   methods: {
     mouseDown(e) {
       this.isPressed = true;
-      this.startX = e.offsetX - this.$refs.slider.offsetLeft;
-      this.$refs.container.style.cursor = "grabbing";
+      this.startX = e.pageX;
+      this.scrollLeft = this.$refs.slider.scrollLeft;
+      this.$refs.slider.style.cursor = "grabbing";
     },
     mouseEnter(e) {
-      this.$refs.container.style.cursor = "grab";
+      this.$refs.slider.style.cursor = "grab";
     },
     mouseLeave(e) {
       this.isPressed = false;
-      this.$refs.container.style.cursor = "grab";
+      this.$refs.slider.style.cursor = "grab";
     },
     mouseUp(e) {
       this.isPressed = false;
-      this.$refs.container.style.cursor = "grab";
+      this.$refs.slider.style.cursor = "grab";
     },
 
     mouseMove(e) {
       if (this.isPressed) {
-        this.currentX = e.offsetX;
-        this.$refs.slider.style.left = `${this.currentX - this.startX}px`;
-        this.checkBoundaries();
-      }
-    },
-    checkBoundaries() {
-      const containerBoundingRect =
-        this.$refs.container.getBoundingClientRect();
-      const sliderBoundingRect = this.$refs.slider.getBoundingClientRect();
+        const distanceToStart = e.pageX - this.startX;
+        console.log(distanceToStart);
 
-      const currentSliderLeft = parseInt(this.$refs.slider.style.left);
-      console.log(
-        containerBoundingRect.right + " - " + sliderBoundingRect.right
-      );
-      if (currentSliderLeft > 25) {
-        this.$refs.slider.style.left = "0px";
-      } else if (containerBoundingRect.right > sliderBoundingRect.right) {
-        this.$refs.slider.style.left = `-${
-          sliderBoundingRect.width - containerBoundingRect.width
-        }px`;
+        this.$refs.slider.scrollTo({
+          left: this.scrollLeft - distanceToStart,
+          // distanceToStart falder (negativ) når du trækker til højre
+          // distanceToStart stiger (positiv) når du trækker til venstre
+
+          behavior: "instant",
+        });
       }
     },
   },
@@ -71,22 +60,10 @@ export default {
 </script>
 
 <style scoped>
-.slide-container {
-  height: 400px;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-}
-
 .slider {
-  width: 150%;
+  overflow: scroll;
   display: flex;
-  gap: 36px;
-  position: absolute;
-  top: 0;
-  left: 0;
+  gap: 10px;
+  cursor: grab;
 }
 </style>
